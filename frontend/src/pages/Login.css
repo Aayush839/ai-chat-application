@@ -1,0 +1,113 @@
+/* Container to center everything */
+.login-page {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  width: 100vw;          /* Force it to take the full width of the screen */
+  margin: 0;             /* Remove any default browser margins */
+  padding: 0;            /* Remove padding that might be squeezing the content */
+  background-color: #000000; /* Set this to whatever your primary dark color is */
+  position: fixed;       /* Optional: keeps the background steady */
+  top: 0;
+  left: 0;
+  /* background-color: #0f172a;
+  font-family: sans-serif;
+  padding: 20px; */
+}
+
+/* The Box/Card */
+.login-card {
+  width: 100%;
+  max-width: 400px;
+  background-color: #20202094;
+  padding: 40px;
+  border-radius: 20px;
+  box-shadow: #dbd6d6f1;
+  /* border: 1px solid #ffffff; */
+  box-shadow:10px ;
+}
+
+.login-header {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.login-header h1 {
+  color: white;
+  margin-bottom: 8px;
+}
+
+.login-header p {
+  color: #ffffff;
+  font-size: 0.9rem;
+}
+
+/* The Boxed Input Style */
+.input-group {
+  background-color: #161616;
+  border: 1px solid #20202094;
+  border-radius: 10px;
+  padding: 10px 15px;
+  margin-bottom: 15px;
+  display: flex;
+  flex-direction: column;
+}
+#email,#password {
+  display: block;        /* Ensures it stays above the input */
+  /* text-emphasis-color: #ffffff; */
+  color: #dfdfdf;        
+  font-size: 0.75rem;    /* Slightly smaller for a modern look */
+  font-weight: 600;      /* Makes it easier to read */
+  margin-bottom: 4px;    /* Adds a tiny gap so it's not touching the text */
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+.input-group:focus-within {
+  border-color: #3b82f6;
+}
+
+.input-group label {
+  font-size: 0.7rem;
+  color: #64748b;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+.input-group input {
+  background: transparent;
+  border: none;
+  outline: none;
+  color: white;
+  padding: 5px 0;
+  font-size: 1rem;
+}
+
+/* Button & Footer */
+.login-btn {
+  width: 100%;
+  background-color: #3b82f6;
+  color: white;
+  border: none;
+  padding: 12px;
+  border-radius: 10px;
+  font-weight: bold;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+.login-btn:hover {
+  background-color: #2563eb;
+}
+
+.login-footer {
+  text-align: center;
+  margin-top: 20px;
+  color: #94a3b8;
+  font-size: 0.8rem;
+}
+body, html {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}

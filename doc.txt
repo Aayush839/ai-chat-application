@@ -1,0 +1,204 @@
+
+AI Customer Support Chat Platform
+Project Title
+
+AI-Powered Customer Support Chat System
+
+Where it is used
+
+Industry / companies that provide services or products.
+
+This type of system is similar to tools used by companies like
+
+Zendesk
+
+Intercom
+
+These systems allow customers to chat with AI or human agents.
+
+🎯 Project Concept
+
+Users visit a company website and open a chat.
+
+They can:
+
+1️⃣ Chat with an AI support assistant
+2️⃣ Chat with human support agents
+3️⃣ View previous conversations
+
+Your system will:
+
+authenticate users (JWT)
+
+store conversations in database
+
+send messages in real-time
+
+generate AI responses
+
+maintain conversation history
+
+🧠 Example Scenario
+Customer
+
+My order hasn’t arrived yet.
+
+AI Assistant
+
+Please provide your order ID so I can check the status.
+
+Customer
+
+ORD-2345
+
+AI
+
+Your order is currently in transit and will arrive tomorrow.
+
+If AI cannot solve the issue → human agent joins chat.
+
+🏗 How Your Architecture Fits Perfectly
+
+Your architecture already supports this domain:
+
+React Client
+
+Chat UI
+
+Login/Register
+
+WebSocket messaging
+
+Message history
+
+Spring Boot Backend
+
+REST APIs
+
+Authentication
+
+WebSocket broker
+
+AI service
+
+Database
+
+Stores:
+
+User
+Conversation
+Message
+AI Integration
+
+AI answers customer questions automatically.
+
+📊 Database Entities for This Topic
+User
+id
+name
+email
+password
+role (CUSTOMER / AGENT / ADMIN)
+created_at
+Conversation
+id
+customer_id
+agent_id
+status (OPEN / CLOSED)
+created_at
+Message
+id
+conversation_id
+sender_id
+content
+message_type (USER / AI)
+timestamp
+💡 Why This Topic Is Perfect
+
+This project demonstrates real industry concepts:
+
+✔ AI integration
+✔ real-time messaging
+✔ authentication
+✔ database design
+✔ async processing
+✔ scalable architecture
+
+Your project will look like a mini version of
+
+ChatGPT
+
+Slack
+
+but specialized for customer support.
+
+📛 Suggested Final Project Name
+
+You could name it something like:
+
+SupportAI — AI Powered Customer Support Chat Platform
+
+or
+
+SmartHelp — Real-Time AI Customer Support System
+
+🚀 If you want a stronger portfolio
+
+You can add one special feature later:
+
+AI summarizes conversation
+
+AI detects angry customers
+
+AI suggests answers to human agents
+
+These are actual features used in modern support tools.
+
+---------------------
+Your database container name is postgres-db and it is based on the PostgreSQL image.
+-------------------------------------
+
+docker compose up -d   → start containers
+docker ps              → see running containers
+docker compose down    → stop containers
+
+-------------
+how flow of jwt
+
+Every request goes through it.
+
+Example request:
+
+GET /api/test
+Authorization: Bearer eyJhbGciOiJIUzI1NiIs...
+
+Request
+   ↓
+JWT Filter
+   ↓
+Extract Token
+   ↓
+Validate Token
+   ↓
+Set Authentication
+   ↓
+Controller Executes
+
+----------------------
+Suggested Backend Package Structure
+com.aichat
+ ├─ config
+ ├─ controller
+ ├─ service
+ ├─ repository
+ ├─ entity
+ ├─ dto
+ ├─ security
+ ├─ ai
+ └─ websocket
+
+=----------------\
+for run pstgra in docer via bash
+1.docker exec -it postgres-db 
+2.then psql -U postgres
+3.  \c chatapp

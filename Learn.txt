@@ -1,0 +1,51 @@
+What @ManyToOne Means
+
+@ManyToOne means:
+
+Many messages belong to one conversation.
+
+Example:
+
+Conversation 1
+
+Message
+Hello
+Where is my order?
+Thank you
+
+So:
+
+Conversation 1
+   │
+   ├── Message 1
+   ├── Message 2
+   └── Message 3
+-------------------------------
+
+The WebSocket API makes it possible to open a two-way interactive communication session between the user's browser and a server. With this API, you can send messages to a server and receive responses without having to poll the server for a reply.
+
+WebSocket
+The primary interface for connecting to a WebSocket server and then sending and receiving data on the connection.
+
+WebSocketStream Non-standard
+Promise-based interface for connecting to a WebSocket server; uses streams to send and receive data on the connection.
+
+CloseEvent
+The event sent by the WebSocket object when the connection closes.
+
+MessageEvent
+The event sent by the WebSocket object when a message is received from the server.
+	
+
+STOMP 
+STOMP (Simple/Streaming Text Oriented Messaging Protocol) is a lightweight, text-based protocol designed for easy asynchronous messaging between clients and brokers (like ActiveMQ or RabbitMQ) across different languages. It is used to simplify real-time, bidirectional communication over WebSockets or TCP, facilitating interoperability, publish-subscribe mechanisms, and message queueing.
+Why STOMP is Used:
+
+1.Interoperability: It allows applications written in different languages (e.g., Python, Ruby, Java, JavaScript) to interact with the same message broker.
+
+2.Simplicity: Being text-based and modeled on HTTP, it is easy to implement, read, and debug.
+WebSocket Enabling: It is the standard protocol for enabling high-level messaging patterns over lightweight WebSocket connections in web applications.
+
+3.Efficient Routing: STOMP allows for topic-based pub/sub or queue-based point-to-point messaging, often used for organizing application logic through destinations.
+
+4.Reliability: It supports features like message acknowledgement, transactions, and heartbeats to ensure reliable, persistent messaging.	

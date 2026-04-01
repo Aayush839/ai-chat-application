@@ -1,0 +1,48 @@
+:root {
+  font-family: system-ui, Arial, sans-serif;
+  line-height: 1.5;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  height: 100vh;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background: linear-gradient(135deg, #1e1e2f, #2c2c54);
+  color: white;
+}
+
+h1 {
+  font-size: 2rem;
+  margin-bottom: 10px;
+}
+
+button {
+  border-radius: 8px;
+  border: none;
+  padding: 10px 15px;
+
+  font-size: 14px;
+  cursor: pointer;
+
+  background: #2563eb;
+  color: white;
+
+  transition: 0.2s;
+}
+
+button:hover {
+  background: #1d4ed8;
+}
+
+input {
+  font-family: inherit;
+}
