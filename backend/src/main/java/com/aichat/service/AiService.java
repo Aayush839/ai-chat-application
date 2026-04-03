@@ -129,7 +129,7 @@ public class AiService {
                     break;
                 }
             }catch (Exception e) {
-                System.err.println("Error in AI Service: " + e.getMessage());
+                e.printStackTrace();
                 attempt++;
             }
             try {
