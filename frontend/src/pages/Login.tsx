@@ -11,13 +11,15 @@ export default function Login() {
   const [loading, setLoading] = useState(false);
 
   const navigate = useNavigate();
-
+  const BASE_URL = import.meta.env.VITE_API_URL;
   const handleLogin = async () => {
     setLoading(true);
     setError("");
     try {
-      const res = await axios.post("http://localhost:8080/api/users/login", {
-        companyId,
+      // const res = await axios.post("http://localhost:8080/api/users/login", {      
+      const res = await axios.post(`${BASE_URL}/api/users/login`, {
+
+      companyId,
         email,
         password,
       });

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import ChatBox from "../components/ChatBox";
 
 const Dashboard = () => {
-
+const BASE_URL = import.meta.env.VITE_API_URL;
   // ✅ FIX 1: use correct type (string, not String)
   const [conversationId, setConversationId] = useState<string | null>(null);
 
@@ -13,7 +13,9 @@ const Dashboard = () => {
         const token = localStorage.getItem("jwtToken");
         console.log("token:", token);
 
-        const res = await fetch("http://localhost:8080/api/conversation", {
+        // const res = await fetch("http://localhost:8080/api/conversation", {
+        const res = await fetch(`${BASE_URL}/api/conversation`, {
+        
           method: "GET",
           headers: {
             Authorization: `Bearer ${token}`,

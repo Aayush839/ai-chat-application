@@ -11,11 +11,11 @@ export default function Register() {
   const [loading, setLoading] = useState(false);
 
   const navigate = useNavigate();
-
+  const BASE_URL = import.meta.env.VITE_API_URL;
   const register = async () => {
     setLoading(true);
     try {
-      await axios.post("http://localhost:8080/api/users/register", {
+      await axios.post(`${BASE_URL}/api/users/register`, {
         name,
         email,
         password
@@ -45,7 +45,7 @@ export default function Register() {
             <label>Email Address</label>
             <input
               type="email"
-              placeholder="honey@gmail.com"
+              placeholder="email Id"
               onChange={(e) => setEmail(e.target.value)}
             />
           </div>
@@ -55,7 +55,7 @@ export default function Register() {
             <label>Password</label>
             <input
               type="password"
-              placeholder="••••••••"
+              placeholder="password"
               onChange={(e) => setPassword(e.target.value)}
             />
           </div>

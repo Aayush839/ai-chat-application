@@ -12,12 +12,15 @@ export const useChat = (conversationId: string, token: string) => {
 
   const [page,setPage]=useState(0);
 
+  const BASE_URL = import.meta.env.VITE_API_URL;
+
   useEffect(() => {
     if (!token || !conversationId) return;
     console.log("conversationId:", conversationId);
     //const socket = new SockJS("http://localhost:8080/chat");
 	const socket = new SockJS(
-  	`http://localhost:8080/chat?token=${token}`
+    `${BASE_URL}/chat?token=${token}`
+  	// `http://localhost:8080/chat?token=${token}`
 	);
     stompClient.current = new Client({
       webSocketFactory: () => socket,

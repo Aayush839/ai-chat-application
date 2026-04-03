@@ -7,11 +7,11 @@ export default function Chat() {
   const [messages, setMessages] = useState<any[]>([]);
   const [text, setText] = useState("");
   const stompClient = useRef<Client | null>(null);
-
+  const BASE_URL = import.meta.env.VITE_API_URL;
   useEffect(() => {
 
-    const socket = new SockJS("http://localhost:8080/chat");
-
+    // const socket = new SockJS("http://localhost:8080/chat");
+    const socket = new SockJS(`${BASE_URL}/chat`);
     const client = new Client({
       webSocketFactory: () => socket
     });
