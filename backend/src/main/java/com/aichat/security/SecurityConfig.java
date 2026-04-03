@@ -22,21 +22,34 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
 
-         http.cors(cors -> {})
-             .
-                 csrf(csrf -> csrf.disable())
-                 .headers(headers->headers
-                         .frameOptions(frame->frame.disable()))
-            .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/api/users/register", "/api/users/login", "/api/users/dashboard","/chat/**").permitAll()
+        http.cors(cors -> cors.configurationSource(request -> {
+                    var corsConfig = new org.springframework.web.cors.CorsConfiguration();
+                    corsConfig.setAllowedOrigins(java.util.List.of(
+                            "http://localhost:3000",
+                            "http://localhost:5173",
+                            "https://ai-chat-k2f2.onrender.com" 
+                    ));
+                    corsConfig.setAllowedMethods(java.util.List.of("*"));
+                    corsConfig.setAllowedHeaders(java.util.List.of("*"));
+                    corsConfig.setAllowCredentials(true);
+                    return corsConfig;
+                }))
+                .csrf(csrf -> csrf.disable())
+                .headers(headers -> headers.frameOptions(frame -> frame.disable()))
+                .authorizeHttpRequests(auth -> auth
+                        .requestMatchers(
+                                "/api/users/register",
+                                "/api/users/login",
+                                "/api/users/dashboard",
+                                "/chat/**"
+                        ).permitAll()
                         .anyRequest().authenticated()
                 )
-            .sessionManagement(session ->
+                .sessionManagement(session ->
                         session.sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                 )
-            .addFilterBefore(jwtAuthenticationFilter,
+                .addFilterBefore(jwtAuthenticationFilter,
                         UsernamePasswordAuthenticationFilter.class);
-
         return http.build();
     }
 }
