@@ -89,19 +89,19 @@ public class AiService {
 
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON);
-        headers.set("Authorization", "Bearer " + apiKey);
-        headers.set("HTTP-Referer", "http://localhost:3000");
+        headers.setBearerAuth(apiKey); // ✅ ONLY this
+        headers.set("HTTP-Referer", "https://ai-chat-k2f2.onrender.com"); // ✅ your frontend
         headers.set("X-Title", "AI Chat App");
-        headers.setBearerAuth(apiKey);
 
 //        body.put("model", "minimax/minimax-m2.5:free");
         Map<String, Object> body = new HashMap<>();
 //        body.put("model", "nvidia/nemotron-3-super-120b-a12b:free");
-        body.put("model", "openai/gpt-3.5-turbo");
+//        body.put("model", "openai/gpt-3.5-turbo");
         body.put("messages", messages);
+        body.put("model", "qwen/qwen3.6-plus:free");
         body.put("temperature", 0.7);
         body.put("max_tokens", 150);
-
+        System.out.println("API KEY: " + apiKey);
         HttpEntity<Map<String, Object>> request = new HttpEntity<>(body, headers);
         RestTemplate restTemplate = new RestTemplate();
 
@@ -110,12 +110,16 @@ public class AiService {
 
         while (attempt < maxRetries) {
             try {
+                System.out.println("1");
                 ResponseEntity<Map> response = restTemplate.postForEntity(url, request, Map.class);
+                System.out.println("2");
                 List<Map<String, Object>> choices = (List<Map<String, Object>>) response.getBody().get("choices");
                 Map<String, Object> message = (Map<String, Object>) choices.get(0).get("message");
+
                 if (message == null || message.get("content") == null) {
                     return "Sorry, I couldn't generate a response.";
                 }
+                System.out.println("3");
                 return message.get("content").toString();
             } catch (HttpClientErrorException e) {
                 System.err.println("Error: " + e.getResponseBodyAsString());

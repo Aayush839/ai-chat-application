@@ -27,7 +27,7 @@ public class SecurityConfig {
                     corsConfig.setAllowedOrigins(java.util.List.of(
                             "http://localhost:3000",
                             "http://localhost:5173",
-                            "https://ai-chat-k2f2.onrender.com" 
+                            "https://ai-chat-k2f2.onrender.com"
                     ));
                     corsConfig.setAllowedMethods(java.util.List.of("*"));
                     corsConfig.setAllowedHeaders(java.util.List.of("*"));
