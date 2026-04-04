@@ -92,6 +92,7 @@ public class AiService {
         headers.setBearerAuth(apiKey); // ✅ ONLY this
         headers.set("HTTP-Referer", "https://ai-chat-k2f2.onrender.com"); // ✅ your frontend
         headers.set("X-Title", "AI Chat App");
+        headers.set("Accept", "application/json");
 
 //        body.put("model", "minimax/minimax-m2.5:free");
         Map<String, Object> body = new HashMap<>();
